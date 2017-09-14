@@ -1,3 +1,4 @@
+import os,webbrowser
 import config
 import urllib.request
 import json
@@ -43,4 +44,12 @@ def create_imdb_ids_list(ids_file):
 imdb_ids_file = 'imdb-ids-list'
 imdb_ids_list = create_imdb_ids_list(imdb_ids_file)
 
-get_omdb_api()
+#get_omdb_api()
+
+html_file = 'index.html'
+
+with open(html_file, 'w') as f:
+  f.write('Test')
+
+url = os.path.abspath(f.name)
+webbrowser.open('file://'+url,new=2)
