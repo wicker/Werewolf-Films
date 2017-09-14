@@ -230,9 +230,31 @@ The Movie() class will have the following class variables to start with:
 - poster
 - trailer
 
-It will fill these variables from the movies.json file.
-## 6. Designing the PagE?
+It will fill these variables from the movies.json file. 
 
+```
+class Movie():
+
+  def __init__(self,movie):
+
+    self.title = movie['Title']
+    self.year = movie['Year']
+    self.plot = movie['Plot']
+    self.poster = movie['Poster']
+    self.trailer = ''
+
+  def print_movie_info(self):
+
+    print(self.title+' ('+self.year+')')
+    print(self.plot)
+    print('')
+```
+
+I ended up with 337 usable movies after the API calls to the Open Movie Database. I took those and wrote them out to the `index.html` file. 
+
+## 6. Styling the Page
+
+That's for tomorrow...
 
 ## Thoughts
 
