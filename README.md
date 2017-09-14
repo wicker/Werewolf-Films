@@ -252,9 +252,33 @@ class Movie():
 
 I ended up with 337 usable movies after the API calls to the Open Movie Database. I took those and wrote them out to the `index.html` file. 
 
-## 6. Styling the Page
+## 6. Serving the Site
 
-That's for tomorrow...
+I want to use grids and I've worked with the super lightweight [Skeleton CSS Grid Framework](http://getskeleton.com/) before, but I also want to serve the site on Github without having to constantly switch back and forth between the `master` and `gh-pages` branches. 
+
+I found [instructions from cobyism](https://gist.github.com/cobyism/4730490) on how to serve it from a `dist` folder on the `master` branch, so I put the index.html and my Skeleton CSS files in that dist folder, removed the folder from `.gitignore` and pushed.
+
+To push to `gh-pages` in the future:
+
+```
+git add dist && git commit -m "Put Commit Here"
+git subtree push --prefix dist origin gh-pages
+```
+
+Then I realized my main site is jennerhanni.net, but my repo has capital letters so the full address would be `http://jennerhanni.net/Werewolf-Films/` and I don't like that. I did this before on another project: you can go into the `wicker.github.io` repo that serves `jennerhanni.net` and add a folder called `werewolf-films` that includes an HTML file called `index.html` that redirects to `Werewolf-Films`.
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/Werewolf-Films/" />
+  </head>
+</html>
+```
+
+And voila, `http://jennerhanni.net/werewolf-films/` redirects to my Werewolf-Films site.
+
+## 7. Styling
 
 ## Thoughts
 
