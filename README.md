@@ -231,6 +231,8 @@ The Movie() class will have the following class variables to start with:
 - trailer
 
 It will fill these variables from the movies.json file.
+## 6. Designing the PagE?
+
 
 ## Thoughts
 

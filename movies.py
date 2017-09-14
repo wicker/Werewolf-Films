@@ -9,7 +9,11 @@ class Movie():
 
   def __init__(self,movie):
 
-    self.title = movie['Title']
+    print(movie['Title'])
+    if movie['Title']:
+      self.title = movie['Title']
+    else:
+      self.title = ''
     self.year = movie['Year']
     self.plot = movie['Plot']
     self.poster = movie['Poster']
