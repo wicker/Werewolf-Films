@@ -173,7 +173,42 @@ b'{"Title":"Guardians of the Galaxy Vol. 2","Year":"2017","Rated":"PG-13","Relea
 
 I've decided I want to create a movies.json file to store all of this. How do I get this in a JSON dump? StackOverflow [suggests you need a JSON list to start with](https://stackoverflow.com/questions/12994442/appending-data-to-a-json-file-in-python), so let's give that a shot.
 
+The JSON needs to be decoded but otherwise, it's fairly straight-forward. I started with one ID, then tried it with iterating through a list of two IDs. 
 
+```
+import config
+import urllib.request
+import json
+
+def get_omdb_api():
+
+  movies_json_file = 'movies.json'
+  imdb_ids = ['3896198','2140203']
+  movies = []
+
+  with open(movies_json_file, mode='w', encoding='utf-8') as f:
+    json.dump([], f)  # init the file with an empty list
+  
+    for imdb_id in imdb_ids:
+      
+      omdb_request_url = 'http://www.omdbapi.com/?i=tt'+imdb_id+'&apikey='+config.OMDB_API_KEY
+      with urllib.request.urlopen(omdb_request_url) as page:
+        movie_item = json.loads(page.read().decode())
+      movies.append(movie_item)
+
+  with open(movies_json_file, mode='w', encoding='utf-8') as f:
+    json.dump(movies, f)
+```
+
+I checked the output in movies.json in the [JSONLint Validator](https://jsonlint.com/) and it came up as Valid JSON, so we're in business.
+
+```
+[{"Title": "Wolvesbayne", "Country": "USA", "Runtime": "92 min", "Actors": "Mark Dacascos, Yancy Butler, Rhett Giles, Christy Carlson Romano", "Production": "Active Entertainment", "BoxOffice": "N/A", "imdbID": "tt1266121", "Website": "N/A", "Writer": "Leigh Scott", "Metascore": "N/A", "imdbRating": "3.8", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5ODg2ODYwOV5BMl5BanBnXkFtZTcwNTQ4MDQ4NA@@._V1_SX300.jpg", "Rated": "UNRATED", "Plot": "In 1887, the powerful vampire Lilith is vanquished by a vampire council and four amulets avoid her return to the world of living. In the present days, the greedy Realtor Russel Bayne is ...", "Language": "English", "Year": "2009", "Released": "12 Oct 2009", "DVD": "04 Jan 2011", "Genre": "Fantasy, Horror", "Response": "True", "imdbVotes": "920", "Ratings": [{"Value": "3.8/10", "Source": "Internet Movie Database"}], "Awards": "N/A", "Director": "Griff Furst"}, {"Title": "Wolf Children", "Country": "Japan", "Runtime": "117 min", "Actors": "Aoi Miyazaki, Takao Ohsawa, Haru Kuroki, Yukito Nishii", "Production": "N/A", "BoxOffice": "N/A", "imdbID": "tt2140203", "Website": "N/A", "Writer": "Mamoru Hosoda (story), Mamoru Hosoda (screenplay), Satoko Okudera (screenplay)", "Metascore": "71", "imdbRating": "8.2", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUzNTUzMTA5OF5BMl5BanBnXkFtZTgwOTg0ODc1MTE@._V1_SX300.jpg", "Rated": "PG", "Plot": "After her werewolf lover unexpectedly dies, a young college student must move to another location to raise their also wolf son and daughter.", "Language": "Japanese", "Year": "2012", "Released": "21 Jul 2012", "DVD": "26 Nov 2013", "Genre": "Animation, Drama, Family", "Response": "True", "imdbVotes": "23,662", "Ratings": [{"Value": "8.2/10", "Source": "Internet Movie Database"}, {"Value": "94%", "Source": "Rotten Tomatoes"}, {"Value": "71/100", "Source": "Metacritic"}], "Awards": "19 wins & 6 nominations.", "Director": "Mamoru Hosoda"}]
+```
+
+## 4. Output the Bare Bones Webpage
+
+Before wasting a pile of API calls, I want to be sure I can create a webpage with these two films from the JSON I have so far. 
 
 ## Thoughts
 
