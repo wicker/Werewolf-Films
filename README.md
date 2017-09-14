@@ -42,6 +42,8 @@ Teen Wolf
 RATE
 ```
 
+There's an interesting ethical question here. 
+
 IMDB's terms of use explicitly prohibit scraping but this isn't an automated crawl so I think I'm in the clear. I tried sorting by year or release date and realized a bunch of the films don't have dates. So I'm really just stuck with names.
 
 Oh wait, that doesn't work. I need the IMDB ID.
@@ -61,13 +63,13 @@ Wolf-in-law <http://www.imdb.com/title/tt6717208/?ref_=adv_li_i>
 379. Wolf-in-law <http://www.imdb.com/title/tt6717208/?ref_=adv_li_tt>
 ```
 
-So I need the string between `http://www.imdb.com/title/tt` and `/`. This calls for some regex...
+So I need the string between `http://www.imdb.com/title/tt` and `/`. This calls for some regex... 
 
 ```
-cat werewolf-search-results-* | grep -oP '(?<=imdb.com/title/tt).*(?=/)' > imdb_id_list
+cat werewolf-search-results-* | grep -oP '(?<=imdb.com/title/tt).*(?=/)' > imdb_ids_list
 ```
 
-Which gave me this in the foo file:
+Which gave me this in the imdb_ids_list file:
 
 ```
 1266121
@@ -93,7 +95,7 @@ wc imdb-ids-list
 
 794 divided by two is 397, which is about nine more than the listed 389 in the "total search results" but it's good enough for now. 
 
-That's the last we'll see of IMDB.
+That's the last we'll see of IMDB. 
 
 ## 2. Create a Sanitized List of IMDB IDs
 
@@ -141,6 +143,9 @@ imdb_ids_list = create_imdb_ids_list(imdb_ids_file)
 
 ## 3. Query the OMDB API 
 
+First order of business is to figure out how to hide my API key from the code, since I'll be pushing it to Github. I created a local config.py file that has my API key set to a variable. 
+
+Then I add `config.py` to my .gitignore, added `import config` to my module, and used the `config.OMDB_API_KEY` variable throughout my module instead.
 
 
 ## Thoughts

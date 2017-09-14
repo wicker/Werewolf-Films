@@ -1,3 +1,10 @@
+import config
+import urllib.request
+
+def get_omdb_api():
+
+  print(config.OMDB_API_KEY)
+
 def create_imdb_ids_list(ids_file):
 
   ids_list = []
@@ -12,10 +19,12 @@ def create_imdb_ids_list(ids_file):
     ids_list_set = set(ids_list)
     print(len(ids_list_set))
     
-    for imdb_id in ids_list_set:
-      print(imdb_id)
+  #  for imdb_id in ids_list_set:
+  #    print(imdb_id)
 
   return ids_list_set
 
 imdb_ids_file = 'imdb-ids-list'
 imdb_ids_list = create_imdb_ids_list(imdb_ids_file)
+
+get_omdb_api()
