@@ -87,8 +87,8 @@ Which gave me this in the foo file:
 I can't assume there are two of each and it's time to read this into my Python program anyway, so we'll sort out the duplicates. Quickly, though, how many lines in the file? 
 
 ```
-wc imdb-id-list
- 794  794 6352 imdb-id-list
+wc imdb-ids-list
+ 794  794 6352 imdb-ids-list
 ```
 
 794 divided by two is 397, which is about nine more than the listed 389 in the "total search results" but it's good enough for now. 
@@ -98,6 +98,48 @@ That's the last we'll see of IMDB.
 ## 2. Create a Sanitized List of IMDB IDs
 
 I want to see if I can even use the OMDB API, so I'm going to read the `imdb-id-list` file into my Python program, create a list called `imdb_ids`, and clean it up so each ID only occurs once in the list.
+
+A little parsing to remove '\n' from the line, and then I take the set of the list. The length is 390, which is off by one from the displayed search results. I wonder which one isn't displayed? 
+
+A quick visual spot check seems to indicate all the IDs are valid:
+
+```
+imdb-ids-list
+390
+2140203
+0118604
+2106732
+2315064
+2308467
+```
+
+Here's the code:
+
+```
+def create_imdb_ids_list(ids_file):
+
+  ids_list = []
+  print(ids_file)
+
+  with open(ids_file,'r') as f:
+
+    for line in f:
+      line = line.replace('\n','')
+      ids_list.append(line)
+
+    ids_list_set = set(ids_list)
+    print(len(ids_list_set))
+
+    for imdb_id in ids_list_set:
+      print(imdb_id)
+
+  return ids_list_set
+
+imdb_ids_file = 'imdb-ids-list'
+imdb_ids_list = create_imdb_ids_list(imdb_ids_file)
+```
+
+## 3. Query the OMDB API 
 
 
 
