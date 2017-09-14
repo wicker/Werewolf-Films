@@ -3,7 +3,11 @@ import urllib.request
 
 def get_omdb_api():
 
-  print(config.OMDB_API_KEY)
+  imdb_id = 'tt3896198'
+  omdb_request_url = 'http://www.omdbapi.com/?i='+imdb_id+'&apikey='+config.OMDB_API_KEY
+  print(omdb_request_url)
+  t = urllib.request.urlopen(omdb_request_url).read()
+  print(t) 
 
 def create_imdb_ids_list(ids_file):
 

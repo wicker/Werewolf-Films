@@ -147,7 +147,35 @@ First order of business is to figure out how to hide my API key from the code, s
 
 Then I add `config.py` to my .gitignore, added `import config` to my module, and used the `config.OMDB_API_KEY` variable throughout my module instead.
 
+Now, to figure out how to actually do an API call. 
+
+```
+import config
+import urllib.request
+
+def get_omdb_api():
+
+  imdb_id = 'tt3896198'
+  omdb_request_url = 'http://www.omdbapi.com/?i='+imdb_id+'&apikey='+config.OMDB_API_KEY
+  print(omdb_request_url)
+  t = urllib.request.urlopen(omdb_request_url).read()
+  print(t) 
+
+get_omdb_api()
+```
+
+I worked out the string in the python console until it worked, then implemented it in the module. This code uses the hidden API key and an imdb_id to return the following:
+
+```
+http://www.omdbapi.com/?i=tt3896198&apikey=d407d12
+b'{"Title":"Guardians of the Galaxy Vol. 2","Year":"2017","Rated":"PG-13","Released":"05 May 2017","Runtime":"136 min","Genre":"Action, Adventure, Sci-Fi","Director":"James Gunn","Writer":"James Gunn, Dan Abnett (based on the Marvel comics by), Andy Lanning (based on the Marvel comics by), Steve Englehart (Star-lord created by), Steve Gan (Star-lord created by), Jim Starlin (Gamora and Drax created by), Stan Lee (Groot created by), Larry Lieber (Groot created by), Jack Kirby (Groot created by), Bill Mantlo (Rocket Raccoon created by), Keith Giffen (Rocket Raccoon created by), Steve Gerber (character created by: Howard the Duck), Val Mayerik (character created by: Howard the Duck)","Actors":"Chris Pratt, Zoe Saldana, Dave Bautista, Vin Diesel","Plot":"The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill\'s true parentage.","Language":"English","Country":"USA, New Zealand, Canada","Awards":"4 wins & 10 nominations.","Poster":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.9/10"},{"Source":"Rotten Tomatoes","Value":"81%"},{"Source":"Metacritic","Value":"67/100"}],"Metascore":"67","imdbRating":"7.9","imdbVotes":"246,262","imdbID":"tt3896198","Type":"movie","DVD":"22 Aug 2017","BoxOffice":"$389,646,310","Production":"Walt Disney Pictures","Website":"https://marvel.com/guardians","Response":"True"}'
+``` 
+
+I've decided I want to create a movies.json file to store all of this. How do I get this in a JSON dump? StackOverflow [suggests you need a JSON list to start with](https://stackoverflow.com/questions/12994442/appending-data-to-a-json-file-in-python), so let's give that a shot.
+
+
 
 ## Thoughts
+
 
 This would have been a different process if this needed to be an app that automatically updated when new werewolf films come out. 
