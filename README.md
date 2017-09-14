@@ -210,7 +210,27 @@ I checked the output in movies.json in the [JSONLint Validator](https://jsonlint
 
 Before wasting a pile of API calls, I want to be sure I can create a webpage with these two films from the JSON I have so far. I made a couple tiny tweaks to the provided sample code, mostly adding 'with open' so I don't have to remember to explicitly close the file when I'm done with it, and now I get a webpage with the word 'Test'.
 
-## 5. Refactoring into a Class
+## 6. Refactor into Two Python Files
+
+It's pretty clear at this point that when a user runs the movies.py file, they should be starting with a complete and prepared movies.json file. There shouldn't be any further API calls once that movies.json file is ready to go. 
+
+I created a new file called `prepare_movies_json_file.py` that will take care of 
+
+1. Cleaning the IMDB IDs list
+1. Getting the JSON data from the OMDB API
+1. Building the movies.json file
+
+## 5. Creating the Movie Class
+
+The Movie() class will have the following class variables to start with:
+
+- title
+- year
+- plot
+- poster
+- trailer
+
+It will fill these variables from the movies.json file.
 
 ## Thoughts
 

@@ -1,55 +1,26 @@
 import os,webbrowser
-import config
 import urllib.request
 import json
 
-def get_omdb_api():
+class Movie():
 
-  movies_json_file = 'movies.json'
-  imdb_ids = ['1266121','2140203']
   movies = []
 
-  with open(movies_json_file, mode='w', encoding='utf-8') as f:
-    json.dump([], f)  # init the file with an empty list
+  def __init__(self, movie):
+    self.title = movie.title
+    self.year = movie.year
+    self.plot = movie.plot
+    self.poster = movie.poster
+    self.trailer = ''
 
-    for imdb_id in imdb_ids:
+  def create_html_page():
 
-      omdb_request_url = 'http://www.omdbapi.com/?i=tt'+imdb_id+'&apikey='+config.OMDB_API_KEY
-      with urllib.request.urlopen(omdb_request_url) as page:
-        movie_item = json.loads(page.read().decode())
-      movies.append(movie_item)
+    html_file = 'index.html'
 
-  with open(movies_json_file, mode='w', encoding='utf-8') as f:
-    json.dump(movies, f)
+    with open(html_file, 'w') as f:
+      f.write('Test')
 
-def create_imdb_ids_list(ids_file):
+    url = os.path.abspath(f.name)
+    webbrowser.open('file://'+url,new=2)
 
-  ids_list = []
-  print(ids_file)
-
-  with open(ids_file,'r') as f:
-
-    for line in f:
-      line = line.replace('\n','')
-      ids_list.append(line)
-
-    ids_list_set = set(ids_list)
-    print(len(ids_list_set))
-    
-  #  for imdb_id in ids_list_set:
-  #    print(imdb_id)
-
-  return ids_list_set
-
-imdb_ids_file = 'imdb-ids-list'
-imdb_ids_list = create_imdb_ids_list(imdb_ids_file)
-
-#get_omdb_api()
-
-html_file = 'index.html'
-
-with open(html_file, 'w') as f:
-  f.write('Test')
-
-url = os.path.abspath(f.name)
-webbrowser.open('file://'+url,new=2)
+print("Test")
