@@ -208,7 +208,9 @@ I checked the output in movies.json in the [JSONLint Validator](https://jsonlint
 
 ## 4. Output the Bare Bones Webpage
 
-Before wasting a pile of API calls, I want to be sure I can create a webpage with these two films from the JSON I have so far. 
+Before wasting a pile of API calls, I want to be sure I can create a webpage with these two films from the JSON I have so far. I made a couple tiny tweaks to the provided sample code, mostly adding 'with open' so I don't have to remember to explicitly close the file when I'm done with it, and now I get a webpage with the word 'Test'.
+
+## 5. Refactoring into a Class
 
 ## Thoughts
 
