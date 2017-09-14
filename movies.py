@@ -9,11 +9,7 @@ class Movie():
 
   def __init__(self,movie):
 
-    print(movie['Title'])
-    if movie['Title']:
-      self.title = movie['Title']
-    else:
-      self.title = ''
+    self.title = movie['Title']
     self.year = movie['Year']
     self.plot = movie['Plot']
     self.poster = movie['Poster']
@@ -32,8 +28,9 @@ def populate_movies_list_from_json():
     movie_json = json.load(f)
 
   for entry in movie_json:
-    m = Movie(entry)
-    movies.append(m)
+    if entry['Response'] == 'True': 
+      m = Movie(entry)
+      movies.append(m)
 
   for m in movies:
     m.print_movie_info()
@@ -45,10 +42,11 @@ def create_html_page(movie_list):
   html_file = 'index.html'
 
   with open(html_file, 'w') as f:
+    count = 1
     for m in movie_list:
-      f.write(m.title+' ('+m.year+')<br />')
+      f.write(str(count)+'. '+m.title+' ('+m.year+')<br />')
       f.write(m.plot+'<br /><br />')
-
+      count += 1
   url = os.path.abspath(f.name)
   webbrowser.open('file://'+url,new=2)
 
