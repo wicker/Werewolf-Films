@@ -278,7 +278,33 @@ Then I realized my main site is jennerhanni.net, but my repo has capital letters
 
 And voila, `http://jennerhanni.net/werewolf-films/` redirects to my Werewolf-Films site.
 
-## 7. Styling
+## 7. Revisit the Project Requirements
+
+First, I went back to the Udacity project page to figure out my basic requirements so I can submit for this project. I'll be adding all the films and everything later, once I figure out how that works, but for now I'm going to serve the top ten werewolf films. I suspect my favorite (Brotherhood of the Wolf) might not even be on the list, since it's not *technically* a werewolf film, even though it totally is. 
+
+1. Create a data structure to store the favorite movies. I've made a smaller JSON file just containing a few movies that I saw and either liked or were so terrible I loved them despite themselves. I hand-populated the JSON file `topthirteen.json` for these films:
+
+  - American Werewolf in London
+  - Romasanta: The Werewolf Hunt
+  - When Animals Dream
+  - Ginger Snaps
+  - What We Do in the Shadows
+  - Wilderness
+  - Brotherhood of the Wolf
+  - Dog Soldiers
+  - The Howling
+  - The Wolf Man
+  - Wolfen
+  - The Wolfman
+  - Harry Potter and the Prisoner of Azkaban
+
+My Python script loads these in from the JSON, decodes them, and creates a list of objects instantiated from the class Movie().
+
+2. Getting the Posters
+
+I ended up saving them locally, since otherwise I'm hitting the OMDB's poster calls, which I think are coming right from IMDB. Not sure on the legality, but at the moment I expect it's under fair use since it's a recommendation site. Things to think about... 
+
+I created a directory called `posters` in the `img` folder in `dist`. 
 
 ## Thoughts
 

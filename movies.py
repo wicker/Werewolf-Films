@@ -3,7 +3,7 @@ import urllib.request
 import json
 
 movies = []
-movies_json_file = 'movies.json'
+movies_json_file = 'topthirteen.json'
 
 class Movie():
 
@@ -28,9 +28,8 @@ def populate_movies_list_from_json():
     movie_json = json.load(f)
 
   for entry in movie_json:
-    if entry['Response'] == 'True': 
-      m = Movie(entry)
-      movies.append(m)
+    m = Movie(entry)
+    movies.append(m)
 
   for m in movies:
     m.print_movie_info()
@@ -42,11 +41,10 @@ def create_html_page(movie_list):
   html_file = 'index.html'
 
   with open(html_file, 'w') as f:
-    count = 1
     for m in movie_list:
-      f.write(str(count)+'. '+m.title+' ('+m.year+')<br />')
+      f.write(m.title+' ('+m.year+')<br />')
       f.write(m.plot+'<br /><br />')
-      count += 1
+      f.write('<img src="dist/img/'+m.poster+'"><br /><br />')
   url = os.path.abspath(f.name)
   webbrowser.open('file://'+url,new=2)
 
