@@ -1,0 +1,72 @@
+.button.button-primary {
+  width: 100%;
+  margin-bottom: 0px;
+  border-radius: 0 0 10px 10px;
+}
+
+p {
+  text-align:center; 
+}
+
+img {
+  width: 100%;
+  margin-bottom: -7px;
+}
+
+h2 {
+  margin: 10% 0 5%;
+  text-align: center;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 10px 0 10px;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+.plot {
+  padding: 10%;
+  text-align: justify;
+}
+
+.movie {
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+/* Styled horizontal rule inspired by Ibrahim Jabbari 
+   https://codepen.io/ibrahimjabbari/pen/ozinB */
+
+hr {
+  background:url('../img/howl.jpg') no-repeat center;
+  background-size: contain;
+  display: block;
+  height: 129px;
+  border-top: 0;
+  text-align: center;
+  position: relative;
+}
+hr:before,
+hr:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: #000;
+    height: 2px;
+    top: 65px; /* half of 129px height to center the image */
+}
+hr:before {
+    left: 0;
+    right: 50%;
+    margin-right: 50px;
+}
+hr:after {
+    right: 0;
+    left: 50%;
+    margin-left: 40px;
+}
