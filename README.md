@@ -282,7 +282,7 @@ And voila, `http://jennerhanni.net/werewolf-films/` redirects to my Werewolf-Fil
 
 First, I went back to the Udacity project page to figure out my basic requirements so I can submit for this project. I'll be adding all the films and everything later, once I figure out how that works, but for now I'm going to serve the top ten werewolf films. I suspect my favorite (Brotherhood of the Wolf) might not even be on the list, since it's not *technically* a werewolf film, even though it totally is. 
 
-1. Create a data structure to store the favorite movies. I've made a smaller JSON file just containing a few movies that I saw and either liked or were so terrible I loved them despite themselves. I hand-populated the JSON file `topthirteen.json` for these films:
+I've definitely created a data structure to store the favorite movies. To make the site one page, I made a smaller JSON file just containing a few movies that I saw and either liked or were so terrible I loved them despite themselves. I hand-populated the JSON file `topthirteen.json` for these films:
 
   - American Werewolf in London
   - Romasanta: The Werewolf Hunt
@@ -300,11 +300,17 @@ First, I went back to the Udacity project page to figure out my basic requiremen
 
 My Python script loads these in from the JSON, decodes them, and creates a list of objects instantiated from the class Movie().
 
-2. Getting the Posters
+I ended up saving the posters locally, since I'd like the  think are coming right from IMDB. Not sure on the legality, but at the moment I expect it's under fair use since it's a recommendation site. Things to think about... 
 
-I ended up saving them locally, since otherwise I'm hitting the OMDB's poster calls, which I think are coming right from IMDB. Not sure on the legality, but at the moment I expect it's under fair use since it's a recommendation site. Things to think about... 
+I created a directory called `posters` in the `img` folder in `dist` so they're all now local. This may or may not be the right answer. 
 
-I created a directory called `posters` in the `img` folder in `dist`. 
+## 8. Style the Page using Skeleton CSS
+
+I ended up with an unhelpful number of movies at thirteen... not divisible by two, three, or four. I ideally want some sort of grid with cards showing the movie poster and the relevant movie information.
+
+I styled things to have a grid of three rows by four cards. I removed one of the movies from the list, so it would be even. 
+
+I created strings for the static html above and below the movie listings, then iterated through using a count variable to determine when to start and end rows and columns. 
 
 ## Thoughts
 
