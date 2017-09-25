@@ -1,8 +1,19 @@
 import os,webbrowser
 import json
 
-movies = []
+# The following JSON file should contain entries for the following:
+# - Title
+# - Year
+# - Plot
+# - Poster
+# - Trailer
+
 movies_json_file = 'toptwelve.json'
+
+# The webpage will be composed of data from a dynamically generated movie list
+# stored in 'movies' between the 'index_head' and 'index_foot' strings
+
+movies = []
 
 index_head = """ <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +58,8 @@ index_foot = """      <div class="row"><div class="twelve columns"><hr></div></d
 </html>
 """
 
+# Each movie from the JSON file will be an object of the Movie class
+
 class Movie():
 
   def __init__(self,movie):
@@ -63,6 +76,8 @@ class Movie():
     print(self.plot)
     print('')
 
+
+# Load the JSON and append each entry to the movies list 
 def populate_movies_list_from_json():
 
   # open json, load first item
@@ -73,11 +88,15 @@ def populate_movies_list_from_json():
     m = Movie(entry)
     movies.append(m)
 
+  # uncomment this to view the contents of the movies list
   #for m in movies:
     #m.print_movie_info()
 
   return movies
 
+# Compose the page using the global variables for movies and the 
+# webpage header and footer. Add extra spaces in f.write() as appropriate
+# so the source of the HTML is readable.
 def create_html_page(movie_list):
 
   html_file = 'dist/index.html'
@@ -100,13 +119,20 @@ def create_html_page(movie_list):
       f.write('      </div>\n')
       count += 1
 
+      # Apply the div style of clearfix at the end of each three-column row
+      # so each row starts on a clean straight line
       if count in [4,7,10,13]:
         f.write('    </div><div style="clear:both;">&nbsp;</div>\n')
 
     f.write(index_foot)
+
+  # open the local page in the user's browser
   url = os.path.abspath(f.name)
   webbrowser.open('file://'+url,new=2)
 
-movie_list = populate_movies_list_from_json()
-create_html_page(movie_list)
+# main
+if __name__ == "__main__":
+
+  movie_list = populate_movies_list_from_json()
+  create_html_page(movie_list)
 
