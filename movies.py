@@ -1,9 +1,8 @@
 import os,webbrowser
-import urllib.request
 import json
 
 movies = []
-movies_json_file = 'topthirteen.json'
+movies_json_file = 'toptwelve.json'
 
 index_head = """ <!DOCTYPE html>
 <html lang="en">
