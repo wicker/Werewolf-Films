@@ -1,5 +1,4 @@
-import os,webbrowser
-import json
+import os, webbrowser, json
 
 # The following JSON file should contain entries for the following:
 # - Title
