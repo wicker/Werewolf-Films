@@ -20,7 +20,7 @@ index_head = """ <!DOCTYPE html>
 
   <meta charset="utf-8">
   <title>My Favorite Werewolf Films</title>
-  <meta name="description" content="An incomplete but giant list of werewolf films">
+  <meta name="description" content="My favorite werewolf films.">
   <meta name="author" content="Jenner Hanni">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,14 +40,19 @@ index_head = """ <!DOCTYPE html>
       </div>
     </div>"""
 
-index_foot = """      <div class="row"><div class="twelve columns"><hr></div></div>
+index_foot = """      <div class="row">
+        <div class="twelve columns"><hr></div>
+      </div>
       <div class="row">
-      <div class="two columns">&nbsp;</div>
-      <div class="eight columns footer">
-        <p>Built by <a href="http://jennerhanni.net/">Jenner Hanni</a> with images from
-        the <a href="http://clipart-library.com/">Clip Art Library</a>,<br />poster art and
-        movie info from the <a href="http://www.omdbapi.com/">OMDB API</a>,<br />and horizontal 
-        rule inspiration from <a href="https://codepen.io/ibrahimjabbari/pen/ozinB">Ibrahim Jabbari</a> on CodePen.</p>
+        <div class="two columns">&nbsp;</div>
+        <div class="eight columns footer">
+          <p>Built by <a href="http://jennerhanni.net/">Jenner Hanni</a> with 
+          images from the <a href="http://clipart-library.com/">Clip Art 
+          Library</a>,<br />poster art and movie info from the 
+          <a href="http://www.omdbapi.com/">OMDB API</a>,<br />and horizontal 
+          rule inspiration from 
+          <a href="https://codepen.io/ibrahimjabbari/pen/ozinB">Ibrahim 
+          Jabbari</a> on CodePen.</p>
       </div>
       <div class="two columns">&nbsp;</div>
     </div>
@@ -112,8 +117,10 @@ def create_html_page(movie_list):
       f.write('      <h3>'+m.title+'</h3>\n')
       f.write('      <div class="plot">('+m.year+')')
       f.write('      '+m.plot+'</div>')
-      f.write('      <img class="poster" src="img/'+m.poster+'" alt="'+m.title+' poster">\n')
-      f.write('      <a href="'+m.trailer+'"><div class="button button-primary">')
+      f.write('      <img class="poster" src="img/'+m.poster)
+      f.write('" alt="'+m.title+' poster">\n')
+      f.write('      <a href="'+m.trailer+'">')
+      f.write('<div class="button button-primary">')
       f.write('Trailer (YouTube)</div></a>\n')
       f.write('      </div>\n')
       count += 1
