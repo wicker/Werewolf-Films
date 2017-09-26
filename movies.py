@@ -115,8 +115,8 @@ def create_html_page(movie_list):
 
       f.write('      <div class="four columns movie">\n')
       f.write('      <h3>'+m.title+'</h3>\n')
-      f.write('      <div class="plot">('+m.year+')')
-      f.write('      '+m.plot+'</div>\n')
+      f.write('      <div class="plot">('+m.year+') ')
+      f.write(m.plot+'</div>\n')
       f.write('      <img class="poster" src="img/'+m.poster)
       f.write('" alt="'+m.title+' poster">\n')
       f.write('      <a href="'+m.trailer+'">')
