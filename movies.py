@@ -111,12 +111,12 @@ def create_html_page(movie_list):
 
     for m in movie_list:
       if count in [1,4,7,10]:
-        f.write('    <div class="row">\n')
+        f.write('    <div class="row clearfix">\n')
 
       f.write('      <div class="four columns movie">\n')
       f.write('      <h3>'+m.title+'</h3>\n')
       f.write('      <div class="plot">('+m.year+')')
-      f.write('      '+m.plot+'</div>')
+      f.write('      '+m.plot+'</div>\n')
       f.write('      <img class="poster" src="img/'+m.poster)
       f.write('" alt="'+m.title+' poster">\n')
       f.write('      <a href="'+m.trailer+'">')
@@ -125,10 +125,9 @@ def create_html_page(movie_list):
       f.write('      </div>\n')
       count += 1
 
-      # Apply the div style of clearfix at the end of each three-column row
-      # so each row starts on a clean straight line
+      # End the row after every third column entries 
       if count in [4,7,10,13]:
-        f.write('    </div><div style="clear:both;">&nbsp;</div>\n')
+        f.write('    </div>\n')
 
     f.write(index_foot)
 
